@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://dk.yunruan.ltd/user/pass.html -->
+<html lang="zh-CN" class="pixel-ratio-3 retina ios ios-9 ios-9-1 ios-gt-8 ios-gt-7 ios-gt-6"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>修改密码-</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<!-- head 中 -->
+	<link rel="stylesheet" href="/static/pass/weui.min.css">
+	<link rel="stylesheet" href="/static/pass/jquery-weui.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/pass/main.css">
+	<link rel="stylesheet" type="text/css" href="/static/pass/font-awesome.min.css">
+	<script src="/static/pass/jquery1.42.min.js.下载" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/pass/jquery.SuperSlide.2.1.3.js.下载" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/pass/TouchSlide.1.1.js.下载" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+
+<div id="app">
+<style>body,html,#app{height: 100%;}</style>
+
+		<div class="header">
+			<div class="header-nav">
+				 <a style="float:left;padding-left: .5rem" href="javascript:history.go(-1);">
+					<img  src="/static/cat/y.png">
+				</a>
+				<span>修改密码</span>
+			</div>
+
+		</div>
+
+		<div style="height: 2rem;"></div>
+
+
+
+
+
+	<div class="inppass">
+		<p><span>当前密码</span><input type="text" name="passold" id="passold" placeholder="请输入旧密码"></p>
+		<p><span>新密码</span><input type="text" name="passnew1" id="passnew1" placeholder="请输入新密码"></p>
+		<p><span>确认新密码</span><input type="text" name="passnew2" id="passnew2" placeholder="请输入再次新密码"></p>
+	</div>
+
+
+
+
+
+
+	<div class="weui-flex" onclick="pass()">
+		<div class="weui-flex__item">
+			<span class="done avatra-on">确认</span>
+		</div>
+	</div>
+
+
+
+
+
+
+
+</div>
+	<script src="/static/pass/jquery.min.js.下载"></script>
+	<script src="/static/pass/jquery-weui.min.js.下载"></script>
+
+
+
+<script type="text/javascript">
+	
+	function pass(){
+		var passwold = $('#passold').val();
+		var passnew1 = $('#passnew1').val();
+		var passnew2 = $('#passnew2').val();
+
+		if(!passwold || !passnew1 || !passnew2){
+			alert('必须输入新旧密码');return false;
+		}
+
+		if(passnew1 != passnew2){
+			alert('两次新密码不一致');return false;
+		}
+
+		if(passnew2.length < 6){
+			alert('新密码少于6位');return false;
+		}
+
+
+		$.post(
+		"/index.php/index/index/pas",
+		{
+			passold:passwold,
+			passnew2:passnew2,
+		},
+		function (res){
+          if (res.code === 1) {
+            layer.msg("修改密码成功");
+            location.href = '/index.php/index/index/user';
+          }else{
+            if(res.msg === 'unlogin'){
+              layer.msg("暂未登录,请登录帐号");
+              window.location.href='/index.php/index/index/login';
+              return false;
+            }else{
+              layer.msg(res.msg);
+              return false;
+            }
+          }	
+        }
+	);
+
+
+		
+	}
+
+
+
+
+
+</script>
+
+
+
+
+
+
+<!-- body 最后 -->
+<script src="/static/pass/main.js.下载"></script>
+<script src="/static/pass/jquery.min.js.下载"></script>
+<script src="/static/pass/jquery-weui.min.js(1).下载"></script>
+</body></html>

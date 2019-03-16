@@ -1,0 +1,122 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"/www/wwwroot/a.fhhcpu.top/public/../application/index/view/index/login.html";i:1537170940;}*/ ?>
+<!DOCTYPE html>
+<html class="pixel-ratio-1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>金口袋 - 用户登录 </title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <style>
+        .color-danger {
+            color: #f6383a;
+        }
+
+        .bar-tab .tab-item.active, .bar-tab .tab-item:active {
+            color: #f6383a;
+        }
+
+        .buttons-tab .button.active {
+            color: #f6383a;
+            border-color: #f6383a;
+        }
+    </style>
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_785877_amz2ppzyq3.css">
+
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current" id="page-1537157913276">
+
+        <header class="bar bar-nav" style="background: #fff;">
+            <a class="icon icon-left pull-left color-danger" href="javascript:history.go(-1);"></a>
+            <a class="external button button-danger pull-right" href="register">
+                注册
+            </a>
+            <h1 class="title">登录</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="iconfont icon-mobile"></i></div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input id="mobile" type="text" placeholder="请输入手机号">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="iconfont icon-unlock"></i></div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input style="display: none" type="password" placeholder="请输入密码">
+                                    <input id="password" type="password" placeholder="请输入密码">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <a href="javascript:;" onclick="submit()" class="button button-big button-fill button-danger">立即登录</a>
+
+                <p style="text-align: center;"><a style="color: #333;" class="external" href="forget">忘记密码？</a></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="//g.alicdn.com/sj/lib/zepto/zepto.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js" charset="utf-8"></script>
+
+
+<script>
+    function submit() {
+        var mobile = $('#mobile').val(),
+            password = $('#password').val();
+        if (mobile === '') {
+            $.toast("请输入手机号");
+        } else if (password === '') {
+            $.toast("请输入密码");
+        } else {
+            $.showPreloader();
+            $.ajax({
+                url: "/index.php/index/index/login",
+                data: {
+                    telephone: mobile,
+                    password: password
+                },
+                type: 'post',
+                success: function (res) {
+                    $.hidePreloader();
+                    if (res.code === 1) {
+                        $.toast("登录成功，正在跳转...", 3000);
+                        setTimeout(function () {
+                            location.href = '/'
+                        }, 3000)
+                    } else {
+                        $.toast(res.msg)
+                    }
+                },
+                error: function () {
+                    $.hidePreloader();
+                    $.toast('网络异常');
+                }
+            })
+        }
+    }
+</script>
+
+<script>$.init()</script>
+</body>
+</html>

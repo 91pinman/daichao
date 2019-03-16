@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>蜡笔傻新</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+    <style type="text/css">
+        .swiper-container .swiper-slide img{height: 25vh;width: 100%}
+        .swiper-pagination-bullet-active {
+            background: #f6383a;
+        }
+        .loan_list {
+            padding: .2rem .25rem .15rem;
+        }
+        .loan_list a {
+            background-color: #fff;
+            float: left;
+            width: 46%;
+            margin: .3rem 0.3rem;
+            border-radius: .5rem;
+            padding: .25rem .25rem .1rem .25rem;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            position: relative;
+        }
+        .loan_list a .logo {
+            width: 2.4rem;
+            float: left;
+        }
+        .loan_list a .info {
+            display: inline-block;
+            margin-left: .3rem;
+        }
+        .loan_list a .info .name {
+            font-size: .8rem;
+            line-height: .3rem;
+            color: #222;
+            margin-bottom: .1rem;
+        }
+        .loan_list a .info .edu {
+            font-size: .6rem;
+            color: #999;
+            line-height: .22rem;
+        }
+        .loan_list a .point {
+            font-size: .6rem;
+            color: #999;
+            line-height: .47rem;
+            height: .47rem;
+        }
+
+    </style>
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current">
+        <nav class="bar bar-tab">
+            <a class="tab-item active" href="/">
+                <span class="icon icon-home"></span>
+                <span class="tab-label">首页</span>
+            </a>
+            <a class="tab-item" href="/index.php/index/index/supermarket">
+                <span class="icon icon-gift"></span>
+                <span class="tab-label">产品超市</span>
+            </a>
+            <a class="tab-item" href="/index.php/index/index/my">
+                <span class="icon icon-me"></span>
+                <span class="tab-label">个人中心</span>
+            </a>
+        </nav>
+        <div class="content">
+            <!-- Slider -->
+            <div class="swiper-container" data-space-between='10'>
+                <div class="swiper-wrapper">
+                    {volist name="slide" id="vo"}
+                    <div class="swiper-slide"><img src="{:get_thumb($vo.cover)}" alt=""></div>
+                    {/volist}
+                </div>
+                <div class="swiper-pagination" style="bottom: 1.5rem;"></div>
+            </div>
+            <div class="loan_list">
+                {volist name="list" id="vo"}
+                <a class="external" onclick="push({$vo.id})">
+                    <img class="logo" src="{:get_thumb($vo.cover)}" alt="logo">
+                    <span class="info">
+                        <p class="name">{$vo.names}</p>
+                        <p class="edu">已下款：{$vo.lower_money}</p>
+                    </span>
+                    <p class="point">{$vo.main_points}</p>
+                </a>
+                {/volist}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script type="text/javascript">
+
+    $(function () {
+        $(".swiper-container").swiper({
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            speed: 800,
+            loop: true,
+            observer: true,
+            observeParents: true,
+            autoplayDisableOnInteraction: false,
+            autoplay: 3000
+        });
+    });
+
+    function push(cid) {
+        $.showPreloader();
+        $.ajax({
+            url: "/index.php/index/index/click",
+            data: {cid: cid},
+            type: 'post',
+            success: function (res) {
+                $.hidePreloader();
+                if (res.code === 1) {
+                    location.href = res.url
+                } else {
+                    if (res.msg === 'unlogin') {
+                        $.alert('您还没有登录，请登录', function () {
+                            location.href = "/index.php/index/index/login"
+                        });
+                    } else {
+                        $.toast(res.msg)
+                    }
+                }
+            },
+            error: function () {
+                $.hidePreloader();
+                $.toast('网络异常');
+            }
+        })
+    }
+
+</script>
+</body>
+</html>

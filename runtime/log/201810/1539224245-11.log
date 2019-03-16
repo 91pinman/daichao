@@ -1,0 +1,67 @@
+---------------------------------------------------------------
+[ 2018-10-11T10:17:25+08:00 ] 212.69.18.132 GET /
+[ info ] d.123as.cn/ [运行时间：0.510029s][吞吐率：1.96req/s] [内存消耗：650.22kb] [文件加载：67]
+[ info ] [ LANG ] /www/wwwroot/d.123as.cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'd.123as.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36',
+  'referer' => 'http://www.9ifz.cc/',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6,ko;q=0.4',
+  'accept-encoding' => 'gzip',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-store',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Config @app_begin [ RunTime:0.133807s ]
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Hook @app_begin [ RunTime:0.063160s ]
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/d.123as.cn/application/index/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/d.123as.cn/public/../application/index/view/index/index.html [ array (
+  0 => 'list',
+  1 => 'slide',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.085353s ] mysql:host=127.0.0.1;port=3306;dbname=d_123as_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dp_admin_config` [ RunTime:0.007496s ]
+[ sql ] [ SQL ] SELECT `name`,`value`,`type` FROM `dp_admin_config` [ RunTime:0.013634s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dp_admin_module` [ RunTime:0.014457s ]
+[ sql ] [ SQL ] SELECT `name`,`config` FROM `dp_admin_module` WHERE  `config` <> '' [ RunTime:0.011957s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dp_admin_hook` [ RunTime:0.014566s ]
+[ sql ] [ SQL ] SELECT `name`,`status` FROM `dp_admin_hook` WHERE  `status` = 1 [ RunTime:0.007952s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dp_admin_plugin` [ RunTime:0.011289s ]
+[ sql ] [ SQL ] SELECT `name`,`status` FROM `dp_admin_plugin` WHERE  `status` = 1 [ RunTime:0.008767s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dp_admin_hook_plugin` [ RunTime:0.011599s ]
+[ sql ] [ SQL ] SELECT * FROM `dp_admin_hook_plugin` WHERE  `status` = 1 ORDER BY `hook`,`sort` [ RunTime:0.008190s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dp_cms_customer` [ RunTime:0.024190s ]
+[ sql ] [ SQL ] SELECT * FROM `dp_cms_customer` WHERE  `online` = 1 ORDER BY `sort` ASC [ RunTime:0.009144s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dp_cms_slider` [ RunTime:0.014620s ]
+[ sql ] [ SQL ] SELECT * FROM `dp_cms_slider` ORDER BY `sort` ASC [ RunTime:0.009719s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dp_admin_attachment` [ RunTime:0.016339s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.012610s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 10 LIMIT 1 [ RunTime:0.011313s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 38 LIMIT 1 [ RunTime:0.008773s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 45 LIMIT 1 [ RunTime:0.016284s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 47 LIMIT 1 [ RunTime:0.008626s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 50 LIMIT 1 [ RunTime:0.008189s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 39 LIMIT 1 [ RunTime:0.013756s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 49 LIMIT 1 [ RunTime:0.011620s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 51 LIMIT 1 [ RunTime:0.014881s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 52 LIMIT 1 [ RunTime:0.013639s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 54 LIMIT 1 [ RunTime:0.012048s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 11 LIMIT 1 [ RunTime:0.014745s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 27 LIMIT 1 [ RunTime:0.021442s ]
+[ sql ] [ SQL ] SELECT `path`,`driver`,`thumb` FROM `dp_admin_attachment` WHERE  `id` = 18 LIMIT 1 [ RunTime:0.015849s ]
